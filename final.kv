@@ -1,0 +1,1600 @@
+WindowManager:
+    MainWindow:
+    RegisterWindow:
+    ForgetpasswordWindow:
+    HomepageWindow:
+
+
+# GUI for pop up window 
+<P>: 
+	Label: 
+		text : "Please enter valid information"
+		size_hint : 0.2, 0.1
+		pos_hint : {"x" : 0.3, "top" : 0.8} 
+
+<MainWindow>:
+    username: username
+	pwd: pwd 
+    FloatLayout:
+        orientation:"vertical"
+        md_bg_color: 0, 1, 0, 1
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,200
+                pos: 3, 40
+
+        Image:
+            source:"logo.png"
+            size_hint : 0.45, 0.3
+			pos_hint : {"x":0.29, "top":0.9} 
+            allow_stretch: True
+            background_color:(0.55, 0.80, 0.50, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Ellipse:
+                    size: 250,200
+			        pos: 25,270
+
+        Label: 
+			text : "Username: "
+            font_size: 15
+            color: [0,0,0,1]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.14, "top":0.47}
+            background_color:(0.55, 0.80, 0.50, 1)
+            outline_color:(1,1,1,1)
+            outline_width:.1
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                RoundedRectangle:
+                    size: 95,30
+			        pos: 20,194
+            
+            
+		TextInput: 
+			id : username
+            font_size: 12
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.45} 
+		Label: 
+			text : "Password: "
+            font_size: 15
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.14, "top" : 0.39} 
+            outline_color:(1,1,1,1)
+            outline_width:.1
+            background_color:(0.55, 0.80, 0.50, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                RoundedRectangle:
+                    size: 95,30
+			        pos: 20,154
+		TextInput: 
+			id : pwd 
+            font_size: 12
+            password: True
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.36} 
+        Button: 
+			text: "Forgot Password?"
+            color: [0,0,0,1]
+            font_size: 12
+            italic:True
+            background_color: rgba(0,0,0,0)	
+            size_hint : 0.45, 0.05
+			pos_hint : {"x" : 0.3, "top" : 0.15} 	
+            on_release:
+                app.root.current = "otpmobile"
+                root.manager.transition.direction = "right"
+		Button:
+            text: "Register"
+            color: [0,0,0,1]
+            font_size: 15
+            bold:True
+            background_color: rgba(0,0,0,0)
+            outline_color:(1,1,1,1)
+            outline_width:1
+            size_hint : 0.45, 0.05
+            pos_hint : {"x" : 0.3, "top" : 0.2}     
+            on_release: 
+				app.root.current = 'register'
+				root.manager.transition.direction = "left" 
+			
+		Button: 
+			text : "Login"
+            color: [0,0,0,1]
+            font_size: 15
+            bold:True
+            background_color:rgba(0,0,0,1)
+            outline_color:(1,1,1,1)
+            outline_width:1
+			size_hint : 0.45, 0.05
+			pos_hint : {"x" : 0.3, "top" : 0.25} 
+			on_release: 
+				root.validate() 
+				root.manager.transition.direction = "right"
+
+
+<RegisterWindow>:
+    name2 : name2 
+    mobile : mobile
+	pwd : pwd 
+	FloatLayout: 
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,400
+                pos: 3, 40
+            
+            
+        Button:
+            #back button
+            text: ''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_press: 
+				root.backbtn() 
+				root.manager.transition.direction = "up"
+		Label: 
+			text : "Name: "
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.15, "top":0.8} 
+            font_size: 15
+            color: [0,0,0,0.90]
+		TextInput: 
+			id : name2 
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline: False
+			size_hint: 0.5, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.78} 
+        Label: 
+			text : "Mobile: "
+            font_size: 15
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.15, "top":0.66} 
+		TextInput: 
+			id : mobile
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint: 0.5, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.63}  
+		Label: 
+			text : "Password: "
+            font_size: 15
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.18, "top" : 0.5} 
+		TextInput: 
+			id : pwd 
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline : False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.45, "top" : 0.48} 
+		Button: 
+			text : "Submit"
+            font_size: 15
+            font_name: "verdana"
+            color: [1,1,1,1]
+            #background_color: rgba(0,0,0,0)
+			size_hint :  0.29, 0.05
+			pos_hint : {"x" : 0.52, "top" : 0.35} 
+			on_release : 
+				root.signupbtn() 
+				root.manager.transition.direction = "right"
+
+
+
+<ForgetpasswordWindow>:
+    username : username
+    # mobile : mobile
+	newpwd : newpwd 
+    confirmpwd : confirmpwd
+	FloatLayout: 
+		size: root.width, root.height  
+        orientation:'vertical'
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,400
+                pos: 3, 40
+              
+        Button:
+            #back button
+            text: ''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_release: 
+				root.backbutton() 
+				root.manager.transition.direction = "right"   
+        Label: 
+			text : "Username : "
+            font_size: 13
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x":0.06, "top":0.72} 
+		TextInput: 
+			id : username
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.47, "top" : 0.7} 
+		Label: 
+			text : "New Password: "
+            font_size: 13
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.1, "top" : 0.52} 
+		TextInput: 
+			id : newpwd 
+            password: True
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.47, "top" : 0.5} 
+        Label: 
+			text : "Confirm Password: "
+            font_size: 13
+            color: [0,0,0,0.90]
+			size_hint : 0.2, 0.1
+			pos_hint : {"x" : 0.13, "top" : 0.32} 
+		TextInput: 
+			id : confirmpwd 
+            password: True
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.47, "top" : 0.3} 
+        Button: 
+			text : "Submit"
+            font_size: 15
+            color: [1,1,1,1]
+            #background_color: rgba(0,0,0,0)
+			size_hint :  0.29, 0.05
+			pos_hint : {"x" : 0.52, "top" : 0.15} 
+			on_release : 
+				root.verify() 
+				root.manager.transition.direction = "right"
+
+
+# GUI to show validation result 
+<logDataWindow>: 
+	info: info 
+    onetimepassword: onetimepassword
+	FloatLayout: 
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,400
+                pos: 3, 40
+            
+        Button:
+            #back button
+            text: ''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_press: 
+				root.onetimepwd() #will go to login page
+				root.manager.transition.direction = "up"
+		Label: 
+			id: info 
+            font_size: 15
+            color: [0,0,0,0.90]
+			size_hint : 0.5, 0.2
+			pos_hint : {"x" : 0.01, "top" : 0.75} 
+			text : "Enter OTP:"
+		TextInput: 
+			id: onetimepassword
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.40, "top" : 0.6} 
+		Button: 
+			text: "Verify"
+            font_size: 15
+            #color: [0,0,0,0.90]
+            #background_color:rgba(0,0,0,0)
+			size_hint : 0.4, 0.05
+			pos_hint : {"x" : 0.33, "top" : 0.4} 
+			on_release: 
+				root.verifybutton()
+				root.manager.transition.direction = "down"
+
+
+
+# GUI to get mobile number for sending otp
+<otpmobileWindow>:  
+    name2 : name2
+	FloatLayout: 
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,400
+                pos: 3, 40
+            	
+		TextInput: 
+			id : name2
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.40, "top" : 0.6} 
+        Button:
+            #back button
+            text:''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_press: 
+				root.back() 
+				root.manager.transition.direction = "up"
+
+        Label: 
+            text : "Enter Username:"
+            font_size: 15
+            color: [0,0,0,0.90]
+			size_hint : 0.5, 0.2
+			pos_hint : {"x" : 0.01, "top" : 0.75} 
+		Button: 
+			text: "Send OTP"
+            font_size: 15
+            #color: [0,0,0,0.90]
+            #background_color:rgba(0,0,0,0)
+			size_hint : 0.4, 0.05
+			pos_hint : {"x" : 0.33, "top" : 0.4} 
+			on_release: 
+				root.sendotpmob()
+				root.manager.transition.direction = "down"
+
+
+<HomepageWindow>:
+    FloatLayout: 
+		size: root.width, root.height  
+        orientation:'vertical' 
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,400
+                pos: 3, 40 
+        Button:
+            #settings button
+            text: ''
+            background_normal: 'Settingsicon.png'
+            background_down: 'Settingsicon.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.04,"y":0.95} 
+            on_release: 
+				root.hp_settings() 
+				root.manager.transition.direction = "right"
+        Button:
+            #support button
+            text: ''
+            background_normal: 'cuscare.png'
+            background_down: 'cuscare.png'
+            mipmap: True
+            size_hint : 0.05,0.02
+			pos_hint : {"x":0.92,"y":0.95} 
+            on_release: 
+				root.supportbtn() 
+				root.manager.transition.direction = "up"
+
+
+        Button:
+            #shoppinglists button
+            text: 'Shopping Lists'
+            font_size: 20
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                # RoundedRectangle:
+                #     size: 95,30
+			    #     pos: 20,194
+            size_hint : 0.7, 0.05
+			pos_hint : {"x":0.15,"y":0.75} 
+            on_release: 
+				root.shoppinglists() 
+				root.manager.transition.direction = "up"
+
+        Button:
+            #parties and events button
+            text: 'Parties and events'
+            font_size: 20
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint : 0.7, 0.05
+			pos_hint : {"x":0.15,"y":0.6} 
+            on_release: 
+				root.partiesandevents() 
+				root.manager.transition.direction = "up"
+
+        Button:
+            text: 'Daily Expenses'
+            font_size: 20
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint : 0.7, 0.05
+			pos_hint : {"x":0.15,"y":0.45} 
+            on_release: 
+				app.root.current = "dailyexpenses"
+				root.manager.transition.direction = "up"
+
+        Button:
+            #calender button
+            text: 'Calendar'
+            font_size: 20
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint : 0.7, 0.05
+			pos_hint : {"x":0.15,"y":0.3}  
+            on_release: 
+				app.root.current = "calendar"
+				root.manager.transition.direction = "up"
+
+        Button:
+            text: 'Paint'
+            font_size: 20
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint : 0.7, 0.05
+			pos_hint : {"x":0.15,"y":0.15}  
+            on_release: 
+				app.root.current = "paint"
+				root.manager.transition.direction = "up"
+
+        
+
+
+#GUI for settings option in notification window
+<homepagesettingsWindow>: 
+    uname: uname
+    usertext: usertext
+    FloatLayout: 
+		size: root.width, root.height  
+        orientation:'vertical'   
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,200
+                pos: 3, 40  
+
+        Image:
+            source:"welcome1.jpg"
+            size_hint : 0.99, 0.4
+			pos_hint : {"x":0.01, "y":0.5} 
+            allow_stretch: True
+            
+
+        Label: 
+            text: 'Account Settings'
+            font_size: 20
+            font_name: "verdana"
+            color: [0,0,0,0.90]
+            #color: [0,0,0,1]
+            size_hint : 0.2, 0.1
+			pos_hint : {"x":0.35,"y":0.92}  
+        Button:
+            #back button
+            text:''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_release: 
+				root.backbtn() 
+				root.manager.transition.direction = "right"  
+        Label:
+            id: uname 
+            text: 'Username:'
+            font_size: 15
+            color: [0,0,0,0.90]
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.3, 0.1
+			pos_hint : {"x":0.15,"y":0.4}  
+
+        TextInput: 
+			id:usertext
+            readonly:True
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.40, "top" : 0.4} 
+        Button:
+			text:'Change Password'
+            font_size: 15
+            font_name: "verdana"
+            color: [1,1,1,1]
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.23, "y" : 0.25} 
+            on_release: 
+				root.changepassword() 
+				root.manager.transition.direction = "left"
+
+        Button:
+			text:'Delete Account'
+            font_size: 15
+            color: [1,1,1,1]
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.23, "y" : 0.15} 
+            on_release: 
+				root.deleteaccount() 
+				root.manager.transition.direction = "left"
+
+        
+
+#GUI for notificationWindow
+<supportWindow>: 
+    FloatLayout: 
+		size: root.width, root.height  
+        orientation:'vertical'    
+        canvas:
+            Color:
+                rgba: 0.55, 0.80, 0.50, 1 #olive green
+            RoundedRectangle:
+                size: 290,200
+                pos: 3, 40        
+        
+        Image:
+            source:"emoji.png"
+            size_hint : 0.7, 0.5
+			pos_hint : {"x":0.15, "y":0.45} 
+            allow_stretch: True
+            
+        Label: 
+            text: 'Support'
+            font_size: 20
+            color: [0,0,0,0.90]
+            underline: True
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.2, 0.1
+			pos_hint : {"x":0.2,"y":0.92} 
+		Button:
+            #back button
+            text:''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_release: 
+				root.backbutton() 
+				root.manager.transition.direction = "right"  
+        Label: 
+            text: 'Got a question?'
+            font_size: 15
+            color: [0,0,0,0.90]
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.2,"y":0.35} 
+
+        Label: 
+            text: "We'd love to hear from you :)"
+            font_size: 15
+            color: [0,0,0,0.90]
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.2,"y":0.3} 
+
+        Label: 
+            text: "Send us your queries..."
+            font_size: 15
+            color: [0,0,0,0.90]
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.2,"y":0.25} 
+
+        Label: 
+            text: "We'll get back to you soon."
+            font_size: 15
+            font_name: "verdana"
+            color: [0,0,0,0.90]
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.2,"y":0.2} 
+
+        Label: 
+            text: "Dial @ +91 9976123458"
+            font_size: 15
+            color: [0,0,0,0.90]
+            italic:True
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.1,"y":0.15} 
+
+        Label: 
+            text: "Mail to hutsupport@gmail.com"
+            font_size: 15
+            color: [0,0,0,0.90]
+            italic:True
+            background_color:rgba(0,0,0,0)
+            size_hint : 0.6, 0.1
+			pos_hint : {"x":0.17,"y":0.1} 
+
+ 
+
+
+
+
+  
+#---------------------------------------------
+#shopping lists
+
+
+<shoppinglistviewWindow>:
+    item_input: input2
+    title_input: input1
+    FloatLayout:
+        TextInput:
+            id: input1
+            hint_text: "Enter Note name you want to view"
+            font_size:'10sp'
+            size_hint:0.55,0.05
+            pos_hint:{"x":0.25,"y":0.94}
+        TextInput:
+            id: input2
+            multiline: True
+            font_size:'10sp'
+            #hint_text: "Enter list items.."
+            size_hint:0.8,0.7
+            pos_hint:{"x":0.12,"y":0.1}
+
+        Button:
+            text:'Open Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.55,"y":0.84}
+            on_release: 
+                root.viewnote()
+
+        Button:
+            text:'Close Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.15,"y":0.84}
+            on_release: 
+                root.closenote()
+        
+        Button:
+            text:'Copy'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.05,"y":0.04}
+            on_release: 
+                root.copy()
+           
+        Button:
+            text:'Delete'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.55,"y":0.04}
+            on_release: 
+                root.delete()
+        
+        Button:
+            #back button
+            text:'<'
+            font_size:"20sp"
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint :  (0.1,0.05)
+            pos_hint : {"x" : 0.01, "y" : 0.94} 
+            on_release: 
+                app.root.current= 'shoppinglists'
+                root.manager.transition.direction = "right"
+
+<AddNewForm>:
+    item_input: input2
+    title_input: input1
+    TextInput:
+        id: input1
+        hint_text: "Add Title"
+        font_size:'10sp'
+        size: 250,30
+        pos: 43,465
+    TextInput:
+        id: input2
+        multiline: True
+        font_size:'10sp'
+        hint_text: "Enter list items.."
+        size: 250,300
+        pos: 23,110
+    Button:
+        text:'Save'
+        size: 130,40
+        pos: 80,30
+        on_release: 
+            root.submit_input()
+
+#GUI for shoppinglists option in homepage
+<shoppinglistsWindow>:
+    FloatLayout:
+        orientation: "vertical"
+        MyRecycleView:
+        FloatLayout:
+            Button:
+                #back button
+                text:'<'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.01, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'homepage'
+                    root.manager.transition.direction = "right"
+            Button:
+                text: '+'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.9, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'shoppinglistadd'
+            Button:
+                text: 'View Note'
+                font_size:"12sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.25,0.05)
+                pos_hint : {"x" : 0.35, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'shoppinglistview'
+
+<MyRecycleView>:
+    viewclass: 'RVItem'
+    RecycleBoxLayout:
+        color: 1,1,1,1
+        size:110,30
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        multiselect: True
+        touch_multiselect: True
+        spacing: dp(2)
+
+#GUI for shoppinglist add window from shopping list
+<shoppinglistaddWindow>: 
+    FloatLayout:
+        Button:
+            text: '<'
+            size_hint : (0.1,0.05)
+			pos_hint : {"x":0.01,"y":0.94}
+            on_release: 
+                app.root.current= 'shoppinglists'    
+
+
+#---------------------------------------------------------------------------------
+#parties and events
+
+
+<Addnewf>:
+    itemin: intwo
+    titlein: inone
+    TextInput:
+        id: inone
+        hint_text: "Add Title"
+        font_size:'10sp'
+        size: 250,30
+        pos: 43,465
+    TextInput:
+        id: intwo
+        multiline: True
+        font_size:'10sp'
+        hint_text: "Enter list items.."
+        size: 250,300
+        pos: 23,110
+    Button:
+        text:'Save'
+        size: 130,40
+        pos: 80,30
+        on_release: 
+            root.submitin()
+
+#GUI for shoppinglists option in homepage
+<partiesandeventsWindow>:
+    FloatLayout:
+        orientation: "vertical"
+        Myrview:
+        FloatLayout:
+            Button:
+                #back button
+                text:'<'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.01, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'homepage'
+                    root.manager.transition.direction = "right"
+            Button:
+                text: '+'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.9, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'partiesandeventsadd'
+
+            Button:
+                text: 'View Note'
+                font_size:"12sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.25,0.05)
+                pos_hint : {"x" : 0.35, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'partiesandeventsview'
+
+
+<partiesandeventsviewWindow>:
+    itemin: intwo
+    titlein: inone
+    FloatLayout:
+        TextInput:
+            id: inone
+            hint_text: "Enter Note name you want to view"
+            font_size:'10sp'
+            size_hint:0.55,0.05
+            pos_hint:{"x":0.25,"y":0.94}
+        TextInput:
+            id: intwo
+            multiline: True
+            font_size:'10sp'
+            #hint_text: "Enter list items.."
+            size_hint:0.8,0.7
+            pos_hint:{"x":0.12,"y":0.1}
+
+        Button:
+            text:'Open Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.55,"y":0.84}
+            on_release: 
+                root.viewnote()
+
+        Button:
+            text:'Copy'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.05,"y":0.04}
+            on_release: 
+                root.copyparty()
+
+        Button:
+            text:'Close Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.15,"y":0.84}
+            on_release: 
+                root.closenote()
+            
+        Button:
+            text:'Delete'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.55,"y":0.04}
+            on_release: 
+                root.deleteparty()
+        
+        Button:
+            #back button
+            text:'<'
+            font_size:"20sp"
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint :  (0.1,0.05)
+            pos_hint : {"x" : 0.01, "y" : 0.94} 
+            on_release: 
+                app.root.current= 'partiesandevents'
+                root.manager.transition.direction = "right"
+
+
+
+<Myrview>:
+    viewclass: 'RVitem'
+    RecycleBoxLayout:
+        color: 1,1,1,1
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        multiselect: True
+        touch_multiselect: True
+        spacing: dp(2)
+
+#GUI for shoppinglist add window from shopping list
+<partiesandeventsaddWindow>: 
+    FloatLayout:
+        Button:
+            text: '<'
+            size_hint : (0.1,0.05)
+			pos_hint : {"x":0.01,"y":0.94}
+            on_release: 
+                app.root.current= 'partiesandevents'    
+
+
+
+
+#------------------------------------------------------------------------------
+#Daily expenses starts here
+
+
+
+
+
+<Anf>:
+    iteminput: inputtwo
+    titleinput: inputone
+    TextInput:
+        id: inputone
+        hint_text: "Add Title"
+        font_size:'10sp'
+        size: 250,30
+        pos: 43,465
+    TextInput:
+        id: inputtwo
+        multiline: True
+        font_size:'10sp'
+        hint_text: "Enter list items.."
+        size: 250,300
+        pos: 23,110
+    Button:
+        text:'Save'
+        size: 130,40
+        pos: 80,30
+        on_release: 
+            root.submitinput()
+
+
+
+<dailyexpensesviewWindow>:
+    iteminput: inputtwo
+    titleinput: inputone
+    FloatLayout:
+        TextInput:
+            id: inputone
+            hint_text: "Enter Note name you want to view"
+            font_size:'10sp'
+            size_hint:0.55,0.05
+            pos_hint:{"x":0.25,"y":0.94}
+        TextInput:
+            id: inputtwo
+            multiline: True
+            font_size:'10sp'
+            #hint_text: "Enter list items.."
+            size_hint:0.8,0.7
+            pos_hint:{"x":0.12,"y":0.1}
+
+        Button:
+            text:'Open Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.55,"y":0.84}
+            on_release: 
+                root.viewnotedaily()
+
+        Button:
+            text:'Close Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.15,"y":0.84}
+            on_release: 
+                root.closenotedaily()
+
+        Button:
+            text:'Copy'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.15,"y":0.01}
+            on_release: 
+                root.copydaily()
+
+        Button:
+            text:'Delete'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.55,"y":0.01}
+            on_release: 
+                root.deletedaily()
+        
+        Button:
+            #back button
+            text:'<'
+            font_size:"20sp"
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint :  (0.1,0.05)
+            pos_hint : {"x" : 0.01, "y" : 0.94} 
+            on_release: 
+                app.root.current= 'dailyexpenses'
+                root.manager.transition.direction = "right"
+
+        Button:
+            #calculator button
+            text: ''
+            background_normal: 'cal.png'
+            background_down: 'cal.png'
+            mipmap: True
+            size_hint : 0.1,0.05
+            pos_hint : {"x":0.01,"y":0.01} 
+            on_release: 
+                app.root.current='Calculator'
+                root.manager.transition.direction = "right"
+
+
+#GUI for shoppinglists option in homepage
+<dailyexpensesWindow>:
+    FloatLayout:
+        orientation: "vertical"
+        Myrecview:
+        FloatLayout:
+            Button:
+                #back button
+                text:'<'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.01, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'homepage'
+                    root.manager.transition.direction = "right"
+            Button:
+                text: '+'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.9, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'dailyexpensesadd'
+            Button:
+                text: 'Locker'
+                font_size:"12sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.45,0.05)
+                pos_hint : {"x" : 0.01, "y" : 0.1} 
+                on_release: 
+                    app.root.current= 'locker'
+
+            Button:
+                text: 'View Note'
+                font_size:"12sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.45,0.05)
+                pos_hint : {"x" : 0.55, "y" : 0.1} 
+                on_release: 
+                    app.root.current= 'dailyexpensesview'
+
+            
+<Myrecview>:
+    viewclass: 'RV'
+    RecycleBoxLayout:
+        color: 1,1,1,1
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        multiselect: True
+        touch_multiselect: True
+        spacing: dp(2)
+
+#GUI for shoppinglist add window from shopping list
+<dailyexpensesaddWindow>: 
+    FloatLayout:
+        Button:
+            text: '<'
+            size_hint : (0.1,0.05)
+			pos_hint : {"x":0.01,"y":0.94}
+            on_release: 
+                app.root.current= 'dailyexpenses'
+
+
+
+
+
+
+#GUI for calculator window
+<CalculatorWindow>:
+    display : display
+    GridLayout:
+        id: calculator
+        display: display
+        rows: 6
+        padding: 5
+        spacing: 5
+        Button:
+            #back button
+            text:'Back'
+            font_size:25
+            mipmap: True
+            on_release: 
+				root.back() 
+				root.manager.transition.direction = "right"
+        BoxLayout:
+            TextInput:
+                id: display
+                size:self.size
+                font_size: 15
+                multiline: False
+        BoxLayout:
+            spacing: 10
+            Button:
+                text: "7"
+                on_press: display.text += self.text
+            Button:
+                text: "8"
+                on_press: display.text += self.text
+            Button:
+                text: "9"
+                on_press: display.text += self.text
+            Button:
+                text: "/"
+                on_press: display.text += self.text
+        BoxLayout:
+            spacing: 10
+            Button:
+                text: "4"
+                on_press: display.text += self.text
+            Button:
+                text: "5"
+                on_press: display.text += self.text
+            Button:
+                text: "6"
+                on_press: display.text += self.text
+            Button:
+                text: "*"
+                on_press: display.text += self.text
+        BoxLayout:
+            spacing: 10
+            Button:
+                text: "1"
+                on_press: display.text += self.text
+            Button:
+                text: "2"
+                on_press: display.text += self.text
+            Button:
+                text: "3"
+                on_press: display.text += self.text
+            Button:
+                text: "-"
+                on_press: display.text += self.text
+        BoxLayout:
+            spacing: 10
+            Button:
+                text: "AC"
+                on_press: display.text = ""
+            Button:
+                text: "0"
+                on_press: display.text += self.text
+            Button:
+                text: "="
+                on_press: root.calculate(display.text)
+            Button:
+                text: "+"
+                on_press: display.text += self.text
+
+
+#GUI for locker window
+<lockerWindow>:
+    lock : lock
+    FloatLayout:
+        orientation:'vertical'
+        Button:
+            #back button
+            text:''
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96}
+            on_release: 
+				root.back() 
+				root.manager.transition.direction = "right"
+
+        Image:
+            source:"secret.jpg"
+            size_hint : 0.7, 0.5
+			pos_hint : {"x":0.15, "y":0.45} 
+            allow_stretch: True
+            
+
+        TextInput: 
+			id : lock
+            hint_text: "mix alphabets and symbols"
+            password: True
+            font_size: 9
+            color: [0,0,0,0.90]
+			multiline :False
+			size_hint : 0.5, 0.05
+			pos_hint : {"x" : 0.25, "top" : 0.35} 
+        Button:
+            #back button
+            text:'Verify'
+            mipmap: True
+            size_hint : 0.3,0.05
+			pos_hint : {"x":0.34,"y":0.1}
+            on_release: 
+				root.locker() 
+				root.manager.transition.direction = "right"
+        
+
+
+
+<Afn>:
+    ini: insecond
+    intt: infirst
+    TextInput:
+        id: infirst
+        hint_text: "Add Title"
+        font_size:'10sp'
+        size: 250,30
+        pos: 43,465
+    TextInput:
+        id: insecond
+        multiline: True
+        font_size:'10sp'
+        hint_text: "Enter list items.."
+        size: 250,300
+        pos: 23,110
+    Button:
+        text:'Save'
+        size: 130,40
+        pos: 80,30
+        on_release: 
+            root.submittingginput()
+
+
+<lockerstoreviewWindow>:
+    ini: insecond
+    intt: infirst
+    FloatLayout:
+        TextInput:
+            id: infirst
+            hint_text: "Enter Note name you want to view"
+            font_size:'10sp'
+            size_hint:0.55,0.05
+            pos_hint:{"x":0.25,"y":0.94}
+        TextInput:
+            id: insecond
+            multiline: True
+            font_size:'10sp'
+            #hint_text: "Enter list items.."
+            size_hint:0.8,0.7
+            pos_hint:{"x":0.12,"y":0.1}
+
+        Button:
+            text:'Open Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.55,"y":0.84}
+            on_release: 
+                root.viewnotelocker()
+
+        Button:
+            text:'Close Note'
+            font_size:"10sp"
+            size_hint:0.2,0.05
+            pos_hint:{"x":0.15,"y":0.84}
+            on_release: 
+                root.closenotelocker()
+
+        Button:
+            text:'Copy'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.05,"y":0.01}
+            on_release: 
+                root.copylocker()
+
+        Button:
+            text:'Delete'
+            size_hint:0.4,0.05
+            pos_hint:{"x":0.55,"y":0.01}
+            on_release: 
+                root.delnotelocker()
+        
+        Button:
+            #back button
+            text:'<'
+            font_size:"20sp"
+            color: [1,1,1,1]
+            background_color:(0,0,0, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+            size_hint :  (0.1,0.05)
+            pos_hint : {"x" : 0.01, "y" : 0.94} 
+            on_release: 
+                app.root.current= 'lockerstore'
+                root.manager.transition.direction = "right"
+
+
+
+#GUI for shoppinglists option in homepage
+<lockerstoreWindow>:
+    FloatLayout:
+        orientation: "vertical"
+        Minerrec:
+        FloatLayout:
+            Button:
+                #back button
+                text:'<'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.01, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'dailyexpenses'
+                    root.manager.transition.direction = "right"
+            Button:
+                text: '+'
+                font_size:"20sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.1,0.05)
+                pos_hint : {"x" : 0.9, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'lockerstoreadd'
+
+            Button:
+                text: 'View Note'
+                font_size:"10sp"
+                color: [1,1,1,1]
+                background_color:(0,0,0, 1)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                size_hint :  (0.25,0.05)
+                pos_hint : {"x" : 0.35, "y" : 0.01} 
+                on_release: 
+                    app.root.current= 'lockerstoreview'
+            
+<Minerrec>:
+    viewclass: 'Recyvi'
+    RecycleBoxLayout:
+        color: 1,1,1,1
+        default_size: None, dp(56)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        multiselect: True
+        touch_multiselect: True
+        spacing: dp(2)
+
+#GUI for shoppinglist add window from shopping list
+<lockerstoreaddWindow>: 
+    FloatLayout:
+        Button:
+            text: '<'
+            size_hint : (0.1,0.05)
+			pos_hint : {"x":0.01,"y":0.94}
+            on_release: 
+                app.root.current= 'lockerstore'
+
+
+
+#----------------------------------------------------------------------------------
+#calendar 
+
+
+#GUI for calendar
+<calendarWindow>:
+    alarm : alarm
+    FloatLayout:
+        id : float
+        Button:
+            #clock
+            text: ''
+            background_normal: 'clock.png'
+            background_down: 'clock.png'
+            mipmap: True
+            size_hint : 0.08,0.05
+			pos_hint : {"x":0.9,"y":0.94} 
+            on_release: 
+				root.show_time_picker()
+                root.manager.transition.direction = "down"
+
+        Button:
+            #back button
+            text: ''
+            font_size: 20
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96} 
+            on_release: 
+				root.backbtn() 
+				root.manager.transition.direction = "right" 
+
+        Button:
+            #calendar
+            text: ''
+            background_normal: 'calendar-month.png'
+            background_down: 'calendar-month.png'
+            mipmap: True
+            size_hint : 0.1,0.06
+			pos_hint : {"x":0.9,"y":0.0} 
+            on_release: 
+				app.root.current='calendardate'
+				root.manager.transition.direction = "down"     
+
+        Label: 
+            id : yearlabel
+			text : "what to be remainded of: "
+            font_size: 15
+            color: [0,0,0,1]
+			size_hint : 0.7, 0.1
+			pos_hint : {"x":0.1, "top":0.58}
+            background_color:(0.55, 0.80, 0.50, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                RoundedRectangle:
+                    size: 250,270
+			        pos: 20,33
+		TextInput: 
+			id : alarm
+            font_size: 13
+            color: [0,0,0,0.90]
+			multiline :True
+			size_hint : 0.75, 0.3
+			pos_hint : {"x" : 0.1, "top" : 0.45} 
+        
+        Button: 
+			text : "Set Alarm"
+            font_size: 15
+            color: [1,1,1,1]
+            #background_color: rgba(0,0,0,0)
+			size_hint :  0.29, 0.05
+			pos_hint : {"x" : 0.34, "y" : 0.1} 
+			on_release : 
+				root.textareas() 
+				root.manager.transition.direction = "right"
+        
+
+#GUI for separate lists in shopping lists window
+<calendardateWindow>:
+    
+    FloatLayout:
+        id : float
+        Image:
+            source:"cal1.jpg"
+            size_hint : 0.95, 0.98
+			pos_hint : {"x":0.01, "y":0.01} 
+            allow_stretch: True
+            background_color:(0.55, 0.80, 0.50, 1)
+        Button:
+            #back button
+            text: ''
+            font_size: 20
+            background_normal: 'backbtn.png'
+            background_down: 'backbtn.png'
+            mipmap: True
+            size_hint : 0.03,0.02
+			pos_hint : {"x":0.05,"y":0.96} 
+            on_release: 
+				root.back() 
+				root.manager.transition.direction = "right" 
+
+#GUI for paint window
+<paintWindow>:
+    Painter:
+        id:painter
+    Button:
+        text:"Back"
+        size_hint:0.3,0.05
+        pos_hint:{"x":0.01,"y":0.94}
+        on_release:app.root.current='homepage'
+
+
+    Button:
+        text:"clear"
+        size_hint:0.3,0.05
+        pos_hint:{"x":0.7,"y":0.94}
+        on_release:painter.canvas.clear() ; painter.canvas.after.clear()
+    FloatLayout:
+        id:float
+
+<Painter>:
+    name:'paintwid'

@@ -1,0 +1,16 @@
+Install:
+ kivymd - pip install kivymd
+ twilio - pip install twilio
+ win10toast - pip install win10toast
+ pandas - pip install pandas
+ clipboard - pip install clipboard
+
+Software Specification
+
+Operating System - Windows 10
+Programming Language - Python
+Python version - python 3.9.2
+Python libraries -pandas
+Framework - KivyMD
+Storage - json,csv
+API - Twilio
