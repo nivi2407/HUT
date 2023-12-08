@@ -1,4 +1,4 @@
-# HUT - Household Utility Services
+# HUT - Household Utility Tracker
 
 HUT is a comprehensive household utility application designed to help you manage your daily tasks, expenses, and reminders effortlessly.
 
@@ -6,7 +6,7 @@ HUT is a comprehensive household utility application designed to help you manage
 
 1. **Shopping List:**
    - Create and manage shopping lists for your everyday needs.
-   - Simple note format for easy editing.
+   - Simple list format for easy include.
 
 2. **Parties & Events List:**
    - Similar to the shopping list but dedicated to parties and events.
