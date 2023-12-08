@@ -13,7 +13,8 @@ Features:
 
 5.Paint- simple paint to scribble with random brush colors that can be wholly erased
 
-[!demo video](https://github.com/nivetha2407/HUT/assets/104524370/4d9b82a6-0495-4fea-858a-5ada50f8f6e0)
+Demo Video:
+https://github.com/nivi2407/HUT/assets/79712578/9f572319-adbf-4eb2-8dc2-b73d8c3f558d
 
 
 
