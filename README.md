@@ -26,9 +26,3 @@ HUT is a comprehensive household utility application designed to help you manage
 ## Demo Video
 
 [Watch Demo Video](https://github.com/nivi2407/HUT/assets/79712578/9f572319-adbf-4eb2-8dc2-b73d8c3f558d)
-
-## How to Use
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/nivi2407/HUT.git
